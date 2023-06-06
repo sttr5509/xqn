@@ -20,14 +20,14 @@ COPY start.sh /xuexi/start.sh
 COPY supervisor.sh /xuexi/supervisor.sh
 RUN pip install -r /xuexi/requirements.txt
 RUN cd /xuexi/; \
-  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; \
-  dpkg -i google-chrome-stable_current_amd64.deb; \
+  wget https://repo.debiancn.org/pool/main/g/google-chrome-stable/google-chrome-stable_92.0.4515.159-1_amd64.deb; \
+  dpkg -i google-chrome-stable_92.0.4515.159-1_amd64.deb; \
   apt-get -fy install; \
   google-chrome --version; \
   rm -f google-chrome-stable_92.0.4515.159-1_amd64.deb \
 RUN cd /xuexi/; \
-  wget -O chromedriver_linux64_114.0.5735.90.zip http://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip; \
-  unzip chromedriver_linux64_114.0.5735.90.zip; \
+  wget -O chromedriver_linux64_92.0.4515.107.zip http://chromedriver.storage.googleapis.com/92.0.4515.107/chromedriver_linux64.zip; \
+  unzip chromedriver_linux64_92.0.4515.107.zip; \
   chmod 755 chromedriver; \
   ls -la; \
   ./chromedriver --version
