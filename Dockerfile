@@ -1,7 +1,7 @@
 
-FROM python:3.7-slim
-ARG usesource="https://github.com/TechXueXi/TechXueXi.git"
-ARG usebranche="dev"
+FROM python:3.6-slim
+ARG usesource="https://github.com/sttr5509/xqn.git"
+ARG usebranche="master"
 ENV pullbranche=${usebranche}
 ENV Sourcepath=${usesource}
 RUN apt-get update
@@ -26,8 +26,8 @@ RUN cd /xuexi/; \
   google-chrome --version; \
   rm -f google-chrome-stable_92.0.4515.159-1_amd64.deb \
 RUN cd /xuexi/; \
-  wget -O chromedriver_linux64_92.0.4515.107.zip http://npm.taobao.org/mirrors/chromedriver/92.0.4515.107/chromedriver_linux64.zip; \
-  unzip chromedriver_linux64_92.0.4515.107.zip; \
+  wget -O chromedriver_linux64_114.0.5735.90.zip http://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip; \
+  unzip chromedriver_linux64_114.0.5735.90.zip; \
   chmod 755 chromedriver; \
   ls -la; \
   ./chromedriver --version
@@ -38,7 +38,7 @@ RUN chmod +x ./start.sh
 RUN chmod +x ./supervisor.sh;./supervisor.sh
 RUN mkdir code
 WORKDIR /xuexi/code
-RUN git clone -b ${usebranche} ${usesource}; cp -r /xuexi/code/TechXueXi/SourcePackages/* /xuexi;
+RUN git clone -b ${usebranche} ${usesource}; cp -r /xuexi/code/xqn/SourcePackages/* /xuexi;
 WORKDIR /xuexi
 EXPOSE 80
 ENTRYPOINT ["/bin/bash", "./start.sh"]

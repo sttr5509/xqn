@@ -237,7 +237,6 @@ def refresh_all_cookies(live_time=8.0, display_score=False):  # cookie有效时�
                     str(int(remain_time * 10) / 10) + " 小时."
                 print(color.green(msg), end="")
                 msgInfo[uid] = msg
-                #remove_cookie(uid)
                 if remain_time < 0:
                     print(color.red(" 已过期 需要重新登陆，将自动移除此cookie."))
                     remove_cookie(uid)

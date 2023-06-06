@@ -11,7 +11,7 @@ from pdlearn.const import const
 
 def article(userId, cookies, article_pointer, scores):
     try:
-        if scores["article_num"] < const.article_num_all or scores["article_num"] < const.article_time_all:
+        if scores["article_num"] < const.article_num_all or scores["article_time"] < const.article_time_all:
             # driver_article = Mydriver(nohead=nohead)
             driver_article = Mydriver(nohead=True)
             # def article_stop_function():
@@ -44,8 +44,7 @@ def article(userId, cookies, article_pointer, scores):
                     break
             try_count = 0
             while True:
-                #自行修改痕迹
-                if scores["article_num"] < const.article_time_all and try_count < 10:
+                if scores["article_time"] < const.article_time_all and try_count < 10:
                     num_time = 60
                     driver_article.get_url(links[article_pointer - 1])
                     remaining = (const.article_time_all - scores["article_time"]) * 1 * num_time
@@ -77,8 +76,7 @@ def article(userId, cookies, article_pointer, scores):
 
 def video(userId, cookies, video_pointer, scores):
     try:
-        #自行修改痕迹
-        if scores["video_num"] < const.video_num_all or scores["video_num"] < const.video_time_all:
+        if scores["video_num"] < const.video_num_all or scores["video_time"] < const.video_time_all:
             # driver_video = Mydriver(nohead=nohead)
             driver_video = Mydriver(nohead=True)
             # def video_stop_function():
